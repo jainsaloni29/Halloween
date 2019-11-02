@@ -6,8 +6,8 @@ WORKDIR /var/www/sample-django-app
 
 RUN pip3 install -r requirements.txt
 
-EXPOSE 8000
+EXPOSE 8002
 
-RUN python3 manage.py migrate
+RUN ./manage.py migrate
 
-CMD ["python3","manage.py","runserver"]
+CMD ./manage.py runserver 0.0.0.0:8002
