@@ -1,7 +1,13 @@
-FROM django
+FROM python:3.7.3
 
-ADD . /sample-django-app
+ADD . /var/www/sample-django-app
 
-WORKDIR /sample-django-app
+WORKDIR /var/www/sample-django-app
 
-CMD [ "python3","manage.py runserver 127.0.0.1:8000"]
+RUN pip3 install -r requirements.txt
+
+EXPOSE 8000
+
+RUN python3 manage.py migrate
+
+CMD ["python3","manage.py","runserver"]
